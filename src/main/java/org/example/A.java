@@ -3,11 +3,14 @@ package org.example;
 import java.util.*;
 
 public class A {
+    int[] arr2 = {123,333,434,454};
     public static void main(String[] args) {
         Random rand = new Random();
         Scanner scan = new Scanner(System.in);
         int num = scan.nextInt();
-        int[] arr = {123,333,434,454};
+        int[] arr = {123,3334,4344,45444};
+
+
 //        for (int i = 0; i < num; i++) {
 //            int a = rand.nextInt(1001);
 //            arr[i] = a;
@@ -42,23 +45,13 @@ public class A {
     }
 
     public static int A1short(int[] arr) {
-        int shortnum = arr[0];
-        for (int num : arr) {
-            if (String.valueOf(num).length() < String.valueOf(shortnum).length()) {
-                shortnum = num;
-            }
-        }
-        return shortnum;
+        Integer[] arrd = Arrays.stream(arr).boxed().toArray(Integer[]::new);
+        return Arrays.stream(arrd).min(Comparator.comparingInt(num -> String.valueOf(num).length())).orElse(null);
     }
 
     public static int A1long(int[] arr) {
-        int longnum = arr[0];
-        for (int num : arr) {
-            if (String.valueOf(num).length() > String.valueOf(longnum).length()) {
-                longnum = num;
-            }
-        }
-        return longnum;
+        Integer[] arrd = Arrays.stream(arr).boxed().toArray(Integer[]::new);
+        return Arrays.stream(arrd).max(Comparator.comparingInt(num -> String.valueOf(num).length())).orElse(null);
     }
 
     public static int[] A2(int[] arr) {
