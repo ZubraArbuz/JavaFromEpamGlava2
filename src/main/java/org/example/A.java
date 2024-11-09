@@ -39,8 +39,6 @@ public class A {
 
         System.out.println("A8.Числа-палиндром: ");
         A8(arr);
-
-        A9(1, -5, 6); // Пример вызова
     }
 
     public static int A1short(int[] arr) {
@@ -162,20 +160,6 @@ public class A {
                     break;
                 }
             }
-        }
-    }
-
-    public static void A9(double a, double b, double c) {
-        double discriminant = b * b - 4 * a * c;
-        if (discriminant > 0) {
-            double root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
-            double root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
-            System.out.println("Корни уравнения: " + root1 + ", " + root2);
-        } else if (discriminant == 0) {
-            double root = -b / (2 * a);
-            System.out.println("Один корень уравнения: " + root);
-        } else {
-            System.out.println("Уравнение не имеет действительных корней.");
         }
     }
 }
