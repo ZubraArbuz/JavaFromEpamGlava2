@@ -1,14 +1,15 @@
 package org.example;
 
+import java.io.IOException;
 import java.util.*;
 
 public class A {
-    int[] arr2 = {123,333,434,454};
     public static void main(String[] args) {
-        Random rand = new Random();
-        Scanner scan = new Scanner(System.in);
-        int num = scan.nextInt();
-        int[] arr = {123,3334,4344,45444};
+//        Random rand = new Random();
+//        Scanner scan = new Scanner(System.in);
+//        int num = scan.nextInt();
+        int failureValue = -1;
+        int[] arr = {123,3334,4344,45444,1111};
 
 
 //        for (int i = 0; i < num; i++) {
@@ -45,13 +46,11 @@ public class A {
     }
 
     public static int A1short(int[] arr) {
-        Integer[] arrd = Arrays.stream(arr).boxed().toArray(Integer[]::new);
-        return Arrays.stream(arrd).min(Comparator.comparingInt(num -> String.valueOf(num).length())).orElse(null);
+        return Arrays.stream(arr).boxed().min(Comparator.comparingInt(num -> String.valueOf(num).length())).orElseThrow(() -> new IllegalArgumentException("ошибка"));
     }
 
     public static int A1long(int[] arr) {
-        Integer[] arrd = Arrays.stream(arr).boxed().toArray(Integer[]::new);
-        return Arrays.stream(arrd).max(Comparator.comparingInt(num -> String.valueOf(num).length())).orElse(null);
+        return Arrays.stream(arr).boxed().max(Comparator.comparingInt(num -> String.valueOf(num).length())).orElseThrow(() -> new IllegalArgumentException("ошибка"));
     }
 
     public static int[] A2(int[] arr) {
@@ -76,22 +75,11 @@ public class A {
     }
 
     public static int A4(int[] arr) {
-        int result = arr[0];
-        int minUniqueDigits = uniqueDigitCount(arr[0]);
-
-        for (int num : arr) {
-            int uniqueDigits = uniqueDigitCount(num);
-            if (uniqueDigits < minUniqueDigits) {
-                minUniqueDigits = uniqueDigits;
-                result = num;
-            }
-        }
-        return result;
+        return Arrays.stream(arr).boxed().min(Comparator.comparingInt(A::uniqueDigitCount)).orElseThrow(() -> new IllegalArgumentException("Пустой массив"));
     }
 
     public static int uniqueDigitCount(int num) {
-        String numStr = String.valueOf(num);
-        return (int) numStr.chars().distinct().count();
+        return (int) String.valueOf(Math.abs(num)).chars().distinct().count();
     }
 
     public static void A5(int[] arr) {
